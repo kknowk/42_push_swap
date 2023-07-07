@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 19:08:15 by khorike           #+#    #+#             */
-/*   Updated: 2023/07/07 16:49:24 by khorike          ###   ########.fr       */
+/*   Updated: 2023/07/07 18:53:37 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_copy_int(int	*s1, char **s2, int n, t_error *sp)
 	{
 		while (n > 0)
 		{
-			s1[i] = ft_atoi(s2[i]);
+			s1[i] = pien_atoi(s2[i], sp);
 			i++;
 			n--;
 		}
@@ -30,7 +30,7 @@ void	ft_copy_int(int	*s1, char **s2, int n, t_error *sp)
 	{
 		while (n > 0)
 		{
-			s1[i] = ft_atoi(s2[i + 1]);
+			s1[i] = pien_atoi(s2[i + 1], sp);
 			i++;
 			n--;
 		}

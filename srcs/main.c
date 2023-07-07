@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 16:40:37 by khorike           #+#    #+#             */
-/*   Updated: 2023/07/07 17:03:06 by khorike          ###   ########.fr       */
+/*   Updated: 2023/07/07 19:20:38 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,8 @@ static void	initialize_er(t_error *er)
 	er->split = 0;
 }
 
-int	main(int ac, char *av[])
+static void	create_a_stack(t_stack *stack_a, int ac, int *buffer3)
 {
-	t_stack	*stack_a;
-	int		*buffer3;
-	t_error	er;
-
-	initialize_er(&er);
-	if (ac == 2)
-	{
-		av = ft_space_split(av[1], ' ', &er);
-		if (!av)
-			return (1);
-		ac = er.count + 1;
-		er.split = 1;
-	}
-	buffer3 = cpr_nums(ac, av, &er);
-	if (!buffer3)
-		return (1);
 	stack_a = create_stack();
 	stack_a->size = ac - 1;
 	stack_a->ms = stack_a->size;
@@ -45,6 +29,31 @@ int	main(int ac, char *av[])
 		push(stack_a, buffer3[ac - 1]);
 	free(buffer3);
 	six_under_or_upper(stack_a);
+}
+
+int	main(int ac, char *av[])
+{
+	t_stack	*stack_a;
+	int		*buffer3;
+	t_error	er;
+
+	stack_a = NULL;
+	initialize_er(&er);
+	digit_handle(av, &er);
+	if (er.er_b)
+		return (put_error(er.er_b));
+	if (ac == 2)
+	{
+		av = ft_space_split(av[1], ' ', &er);
+		if (!av)
+			return (put_error(1));
+		ac = er.count + 1;
+		er.split = 1;
+	}
+	buffer3 = cpr_nums(ac, av, &er);
+	if (!buffer3)
+		return (put_error(er.er_b));
+	create_a_stack(stack_a, ac, buffer3);
 	return (all_free(stack_a));
 }
 

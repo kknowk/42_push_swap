@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:12:37 by khorike           #+#    #+#             */
-/*   Updated: 2023/07/07 16:50:13 by khorike          ###   ########.fr       */
+/*   Updated: 2023/07/07 18:53:21 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		put_error(int type);
 void	put_error_exit_node(t_node	*new_node, int type);
 void	put_error_exit_stack(t_stack *stack, int type);
 void	put_error_return_stack(t_stack *stack, int type);
+void	digit_handle(char **str, t_error *er);
 
 int		*free_return(int *s1, int *s2, int *s3, t_error	*er);
 int		all_free(t_stack *stack_a);
@@ -102,5 +103,7 @@ void	rb_or_rrb(int num, t_stack *stackB);
 void	protein(t_stack *stackA, t_stack *stack_b);
 void	vitamin(t_stack *stackA, t_stack *stack_b, int u_30_p, int u_10_p);
 void	div_three(t_stack *stackA);
+
+int		pien_atoi(const char *nptr, t_error *sp);
 
 #endif

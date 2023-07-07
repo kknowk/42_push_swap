@@ -15,7 +15,8 @@ SRCS = srcs/main.c \
 	srcs/under_6/only_3_numbers.c \
 	srcs/under_6/under_6_numbers.c \
 	srcs/kiniku_sort/kinniku.c \
-	srcs/kiniku_sort/protein.c
+	srcs/kiniku_sort/protein.c \
+	srcs/utils/nakenasino_atoi.c
 
 OBJS = $(SRCS:%.c=%.o)
 
