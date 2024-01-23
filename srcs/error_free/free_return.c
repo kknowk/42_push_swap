@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 11:14:32 by khorike           #+#    #+#             */
-/*   Updated: 2023/07/07 16:50:01 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:07:10 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,17 @@ int	*free_return(int *s1, int *s2, int *s3, t_error	*er)
 
 int	all_free(t_stack *stack_a)
 {
-	t_node	*a;
+	t_node	*current;
+	t_node	*temp;
 
-	a = NULL;
-	while (stack_a->top)
+	if (stack_a == NULL)
+		return (1);
+	current = stack_a->top;
+	while (current != NULL)
 	{
-		a = stack_a->top;
-		stack_a->top = stack_a->top->prev;
-		if (a)
-			free(a);
+		temp = current;
+		current = current->prev;
+		free(temp);
 	}
 	free(stack_a);
 	return (0);

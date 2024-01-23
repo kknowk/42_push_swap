@@ -6,7 +6,7 @@
 /*   By: khorike <khorike@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 16:40:37 by khorike           #+#    #+#             */
-/*   Updated: 2023/07/07 19:20:38 by khorike          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:10:56 by khorike          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	initialize_er(t_error *er)
 	er->split = 0;
 }
 
-static void	create_a_stack(t_stack *stack_a, int ac, int *buffer3)
+static int	create_a_stack(t_stack *stack_a, int ac, int *buffer3)
 {
 	stack_a = create_stack();
 	stack_a->size = ac - 1;
@@ -29,6 +29,7 @@ static void	create_a_stack(t_stack *stack_a, int ac, int *buffer3)
 		push(stack_a, buffer3[ac - 1]);
 	free(buffer3);
 	six_under_or_upper(stack_a);
+	return (all_free(stack_a));
 }
 
 int	main(int ac, char *av[])
@@ -53,8 +54,7 @@ int	main(int ac, char *av[])
 	buffer3 = cpr_nums(ac, av, &er);
 	if (!buffer3)
 		return (put_error(er.er_b));
-	create_a_stack(stack_a, ac, buffer3);
-	return (all_free(stack_a));
+	return (create_a_stack(stack_a, ac, buffer3));
 }
 
 // __attribute__((destructor)) static void destructor()

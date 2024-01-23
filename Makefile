@@ -2,6 +2,7 @@ NAME = push_swap
 CC = cc
 INCLUDES_DIR = ./Includes
 CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES_DIR)
+# CFLAGS += -g3 -fsanitize=address
 
 SRCS = srcs/main.c \
 	srcs/utils/utils.c \
